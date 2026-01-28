@@ -1,21 +1,21 @@
 'use client';
 import Link from 'next/link';
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 
 export default function SpotlightGrid() {
   const containerRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+  
+  // 1. Add state to track which card has been clicked
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      // 1. Neighbor Logic: Calculate mouse position relative to EACH card
       cardsRef.current.forEach((card) => {
         if (!card) return;
         const rect = card.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
-
-        // Update coordinates for the border glow
         card.style.setProperty('--mouse-x', `${x}px`);
         card.style.setProperty('--mouse-y', `${y}px`);
       });
@@ -25,7 +25,6 @@ export default function SpotlightGrid() {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-  // Added 'img' paths for each card (using placeholder logos for demo)
   const cards = [
     { 
       title: "Next.js", 
@@ -61,8 +60,6 @@ export default function SpotlightGrid() {
 
   return (
     <div className="min-h-screen bg-white flex flex-col items-center justify-center font-sans">
-      
-    
       <div
         ref={containerRef}
         className="grid w-full max-w-5xl grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
@@ -71,66 +68,55 @@ export default function SpotlightGrid() {
           <div
             key={i}
             ref={(el) => { cardsRef.current[i] = el }}
-            className="group relative h-48 overflow-hidden rounded-xl bg-slate-400 p-[1px]"
+            // 2. Add click handler: Toggle the active state
+            onClick={() => setActiveIndex(activeIndex === i ? null : i)}
+            className="group relative h-48 overflow-hidden rounded-xl bg-slate-400 p-[1px] cursor-pointer"
           >
-            {/* 1. Spotlight Layer (The Neighbor Glow) 
-               - Visible on neighbors because of the mask technique.
-               - DO NOT use group-hover here if you want the neighbor effect.
-            */}
+            {/* Spotlight Layer (Neighbor Glow) */}
             <div
-              className="absolute inset-0 transition-opacity duration-500"
+              className="absolute inset-0 transition-opacity duration-500 pointer-events-none"
               style={{
-                background: `radial-gradient(
-                  600px circle at var(--mouse-x) var(--mouse-y), 
-                  rgba(34, 197, 94, 0.4), 
-                  transparent 40%
-                )`,
-                // Mask ensures the light only shows near the mouse
-                maskImage: `radial-gradient(
-                  300px circle at var(--mouse-x) var(--mouse-y), 
-                  black, 
-                  transparent
-                )`,
-                WebkitMaskImage: `radial-gradient(
-                  300px circle at var(--mouse-x) var(--mouse-y), 
-                  black, 
-                  transparent
-                )`
+                background: `radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(34, 197, 94, 0.4), transparent 40%)`,
+                maskImage: `radial-gradient(300px circle at var(--mouse-x) var(--mouse-y), black, transparent)`,
+                WebkitMaskImage: `radial-gradient(300px circle at var(--mouse-x) var(--mouse-y), black, transparent)`
               }}
             />
 
-            {/* 2. Inner Content Layer */}
+            {/* Inner Content Layer */}
             <div className="relative h-full w-full overflow-hidden rounded-xl bg-white p-6 flex flex-col justify-center text-black z-20">
               
-              {/* IMAGE REVEAL LOGIC:
-                  - Absolute position centered.
-                  - Starts at opacity-0.
-                  - becomes opacity-100 ONLY on group-hover (hovering THIS card).
-              */}
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0">
-                {/* A glowing backdrop for the image */}
+              {/* IMAGE: Show if Hovered OR Active */}
+              <div 
+                className={`absolute inset-0 flex items-center justify-center transition-opacity duration-500 z-0 
+                  ${activeIndex === i ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}
+                `}
+              >
                 <div className="absolute w-32 h-32 bg-green-500/20 blur-[50px] rounded-full" />
-                
-                {/* The Image Itself */}
                 <img 
                   src={card.img} 
                   alt={card.title} 
-                  className="w-24 h-24 object-contain relative z-10 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]" 
+                  className="w-24 h-24 object-contain relative z-10 drop-shadow-[0_0_15px_rgba(0,0,0,0.1)]" 
                 />
               </div>
 
-              {/* Text Content 
-                  - Optional: Fade text out slightly when image appears 
-              */}
-              <div className="relative z-10 group-hover:opacity-10 transition-opacity duration-500">
+              {/* TEXT: Hide if Hovered OR Active (to reveal image clearly) */}
+              <div 
+                className={`relative z-10 transition-opacity duration-500 
+                  ${activeIndex === i ? 'opacity-0' : 'opacity-100 group-hover:opacity-0'}
+                `}
+              >
                 <h3 className="text-xl font-bold mb-2">{card.title}</h3>
-                <p className="text-slate-400 text-sm">{card.description}</p>
+                <p className="text-slate-500 text-sm">{card.description}</p>
               </div>
 
             </div>
           </div>
         ))}
-      </div><div className="mt-12 flex flex-col items-center gap-4"> <Link href="/" className='hover:text-green-600'>Go Back &rarr;</Link></div>
+      </div>
+
+      <div className="mt-12 flex flex-col items-center gap-4"> 
+        <Link href="/" className='hover:text-green-600'>Go Back &rarr;</Link>
+      </div>
     </div>
   );
 }
