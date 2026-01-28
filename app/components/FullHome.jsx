@@ -3,6 +3,8 @@ import { useState } from 'react';
 import Button from './Button';
 import ImagCard from './ImagCard';
 import FourumCard from './FourumCard';
+import Link from 'next/link';
+
 
 export default function FullHome() {
   const mainProfile = {
@@ -40,9 +42,11 @@ export default function FullHome() {
 
   return (
     <main className="min-h-screen bg-zinc-50 flex flex-col items-center justify-center p-6 lg:p-12">
-      <div className="mb-12">
+      
         <Button name="Abhay Raj Patel" />
-      </div>
+        {/* Navigation button to page2 */}
+        
+     
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl items-start">
         {/* Pass the dynamic data to the Image Card */}
@@ -54,7 +58,10 @@ export default function FullHome() {
           onHover={setActiveData} 
           onLeave={() => setActiveData(mainProfile)} 
         />
+      {/* make a arrow */}
       </div>
+     <div className="mt-12 flex flex-col items-center gap-4"> <Link href="/tech-stack" className='hover:text-green-600'>Know My Techstack &rarr;</Link></div>
+      
     </main>
   );
 }

@@ -11,6 +11,7 @@ const ImagCard = ({ data }) => {
         <Image
         height={2000}
         width={1000}
+        preload={true}
           key={data.image}
           alt={data.name}
           src={data.image}
