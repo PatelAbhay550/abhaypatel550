@@ -10,7 +10,7 @@ import { playClick } from '@/utils/sounds';
 export default function FullHome() {
   const mainProfile = {
     image: "https://scontent.fknu1-4.fna.fbcdn.net/v/t39.30808-6/473134353_1797331867702105_3172409557775362407_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=108&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=9F4x1-wiGlsQ7kNvwELPEF5&_nc_oc=AdnGD2pfLPbdvqm3AfI4c_venoSwpWTB958qT-z_SGvcgvsbRap2E8Spm1k4VEWajf8&_nc_zt=23&_nc_ht=scontent.fknu1-4.fna&_nc_gid=IE3IqhWUMBEpgP86IewrWw&oh=00_AfqpFpcdEN9RThRyYyA1D08720pKLu8GrO18csHMTzjRZQ&oe=697E2066",
-    title: "Developer",
+    title: "Hey there! I'm",
     name: "Abhay Patel",
     description: "I am a fullstack developer with 5 years of experience building web applications, specializing in Next.js and modern React ecosystems."
   };
