@@ -57,7 +57,13 @@ const ProjectModal = ({ project, onClose }) => {
         
         {/* Header */}
         <div className="flex items-center justify-between px-6 pb-4 shrink-0">
-          <h2 className="text-2xl font-bold text-gray-900 leading-tight">{project.name}</h2>
+           <div className="flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-red-400" />
+                <div className="w-3 h-3 rounded-full bg-yellow-400" />
+                <div className="w-3 h-3 rounded-full bg-green-400" />
+                <span className="ml-2 text-xs font-bold text-gray-500 tracking-widest uppercase">{project.name}</span>
+              </div>
+          
           <button 
             onClick={onClose} 
             className="p-3 bg-gray-100 rounded-full text-gray-600 active:scale-90 transition-transform"
