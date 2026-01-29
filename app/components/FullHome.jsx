@@ -20,33 +20,34 @@ export default function FullHome() {
       name: "Exam Rank Check",
       title: "Full Stack",
       image: "https://i.ibb.co/Tqknfdmt/image.png",
-      description: "A tool to check marks of SSC, RRB Exams."
+      description: "A tool to check marks of SSC, RRB Exams.",
+      link: "https://examrankcheck.vercel.app/"
     },
     {
       id: 2,
       name: "Cricketden",
       title: "Full Stack",
       image: "https://i.ibb.co/yF4mVmsV/image.png",
-      description: "A web app to check live cricket scores."
+      description: "A web app to check live cricket scores.",
+      link: "https://cricketden.vercel.app/"
     },
     {
       id: 3,
       name: "India Elects",
       title: "Full Stack",
       image: "https://i.ibb.co/1G8LnsYW/image.png",
-      description: "A website that tracks and covers elections in India."
+      description: "A website that tracks and covers elections in India.",
+      link: "https://indiaelects.vercel.app/"
     }
   ];
 
   const [activeData, setActiveData] = useState(mainProfile);
 
   return (
-    <main className="min-h-screen bg-zinc-50 flex flex-col items-center justify-center p-6 lg:p-12">
+    <main className="min-h-screen relative z-10 flex flex-col items-center justify-center p-6 lg:p-12">
       
         <Button name="Abhay Raj Patel" />
-        {/* Navigation button to page2 */}
         
-     
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl items-start">
         {/* Pass the dynamic data to the Image Card */}
@@ -60,7 +61,7 @@ export default function FullHome() {
         />
       {/* make a arrow */}
       </div>
-     <div className="mt-12 flex flex-col items-center gap-4"> <Link href="/tech-stack" className='hover:text-green-600'>Know My Techstack &rarr;</Link></div>
+     <div className="mt-12 flex flex-col items-center gap-4"> <Link href="/tech-stack" className='hover:text-blue-600'>Know My Techstack &rarr;</Link></div>
       
     </main>
   );

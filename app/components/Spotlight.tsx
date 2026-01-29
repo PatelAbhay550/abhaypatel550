@@ -91,7 +91,7 @@ export default function SpotlightGrid() {
                   ${activeIndex === i ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}
                 `}
               >
-                <div className="absolute w-32 h-32 bg-green-500/20 blur-[50px] rounded-full" />
+                <div className="absolute w-32 h-32 bg-blue-500/20 blur-[50px] rounded-full" />
                 <img 
                   src={card.img} 
                   alt={card.title} 
@@ -115,7 +115,7 @@ export default function SpotlightGrid() {
       </div>
 
       <div className="mt-12 flex flex-col items-center gap-4"> 
-        <Link href="/" className='hover:text-green-600'>Go Back &rarr;</Link>
+        <Link href="/" className='hover:text-blue-600'>Go Back &rarr;</Link>
       </div>
     </div>
   );

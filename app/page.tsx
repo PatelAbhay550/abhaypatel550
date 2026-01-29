@@ -1,7 +1,9 @@
+
 import Button from './components/Button';
 import ImagCard from './components/ImagCard';
 import FourumCard from './components/FourumCard';
 import FullHome from './components/FullHome';
+import BackgroundWave from './components/Wave';
 
 export default function Home() {
   const abhayData = {
@@ -17,6 +19,9 @@ export default function Home() {
   };
 
   return (
- <FullHome/>
+    <>
+      <FullHome />
+      <BackgroundWave />
+    </>
   );
 }
