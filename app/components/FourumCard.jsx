@@ -1,16 +1,20 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import ProjectModal from './ProjectModal';
+import Image from 'next/image';
+import { playClick } from '../../utils/sounds';
 
 
 const FourumCard = ({ projects, onHover, onLeave }) => {
   const [selectedProject, setSelectedProject] = useState(null);
 
   const handleProjectClick = (project) => {
+    playClick.play();
     setSelectedProject(project);
   };
 
   const handleCloseModal = () => {
+    playClick.play();
     setSelectedProject(null);
   };
 
@@ -21,7 +25,10 @@ const FourumCard = ({ projects, onHover, onLeave }) => {
         <div className="flex items-start justify-between p-6 pb-4">
           <div className="flex items-center gap-3">
             <div className="relative">
-              <img
+              <Image
+              height={1000}
+              width={1000}
+              preload={true}
                 alt="User"
                 src="https://scontent.fknu1-6.fna.fbcdn.net/v/t39.30808-1/334998150_2915813855229526_2877140648363160727_n.jpg?stp=c74.0.790.790a_dst-jpg_s200x200_tt6&_nc_cat=102&ccb=1-7&_nc_sid=e99d92&_nc_ohc=98eOaJc3IG0Q7kNvwEXIXGG&_nc_oc=AdnJ0KvCLq_iSQaCG4fMC0yhWMoFIROUq9yaw8n-TTyZT8fJmtz3eyzYWE5uAJWI-pE&_nc_zt=24&_nc_ht=scontent.fknu1-6.fna&_nc_gid=IE3IqhWUMBEpgP86IewrWw&oh=00_AfoVkF9Ja5nhaqMX67heagOlg0c-GZ-20xDLTBt8sj70wA&oe=697E2A45"
                 className="size-10 rounded-xl object-cover ring-2 ring-gray-50"
@@ -73,7 +80,7 @@ const FourumCard = ({ projects, onHover, onLeave }) => {
               </svg>
               <span className="text-xs font-bold uppercase">Chat with me</span>
             </div>
-            <Link href="mailto:patelabhay550@gmail.com" className="text-xs font-extrabold text-blue-600 hover:text-blue-800 uppercase tracking-widest">
+            <Link href="mailto:patelabhay550@gmail.com" onClick={()=>{playClick.play();}} className="text-xs font-extrabold text-blue-600 hover:text-blue-800 uppercase tracking-widest">
               CONTACT ME →
             </Link>
           </div>

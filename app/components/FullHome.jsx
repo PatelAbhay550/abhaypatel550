@@ -4,6 +4,7 @@ import Button from './Button';
 import ImagCard from './ImagCard';
 import FourumCard from './FourumCard';
 import Link from 'next/link';
+import { playClick } from '@/utils/sounds';
 
 
 export default function FullHome() {
@@ -61,7 +62,7 @@ export default function FullHome() {
         />
       {/* make a arrow */}
       </div>
-     <div className="mt-12 flex flex-col items-center gap-4"> <Link href="/tech-stack" className='hover:text-blue-600'>Know My Techstack &rarr;</Link></div>
+     <div className="mt-12 flex flex-col items-center gap-4"> <Link href="/tech-stack" onClick={()=>{playClick.play();}} className='hover:text-blue-600'>Know My Techstack &rarr;</Link></div>
       
     </main>
   );

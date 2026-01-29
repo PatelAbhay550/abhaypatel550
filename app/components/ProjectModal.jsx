@@ -3,6 +3,8 @@ import { createPortal } from 'react-dom';
 import { FaExternalLinkAlt, FaTimes } from 'react-icons/fa';
 import Draggable from 'react-draggable';
 import Link from 'next/link';
+import Image from 'next/image';
+import { playClick } from '../../utils/sounds';
 
 const ProjectModal = ({ project, onClose }) => {
   const nodeRef = useRef(null);
@@ -69,7 +71,10 @@ const ProjectModal = ({ project, onClose }) => {
           className="flex-1 overflow-y-auto px-6 pb-24 overscroll-contain touch-pan-y"
           style={{ WebkitOverflowScrolling: 'touch' }}
         >
-          <img 
+          <Image
+          height={1000}
+          width={2000}
+          preload={true}
             src={project.image} 
             alt={project.name} 
             className="rounded-2xl w-full aspect-video object-cover mb-6 shadow-sm border border-gray-100" 
@@ -92,6 +97,7 @@ const ProjectModal = ({ project, onClose }) => {
               <div className="pb-10">
                 <Link 
                   href={project.link} 
+                  onClick={()=>{playClick.play();}}
                   target="_blank" 
                   className="flex items-center justify-center gap-3 w-full bg-blue-600 text-white py-4 rounded-2xl font-bold text-lg shadow-lg shadow-blue-200 active:bg-blue-700 active:scale-[0.98] transition-all"
                 >
@@ -129,7 +135,10 @@ const ProjectModal = ({ project, onClose }) => {
 
             {/* Desktop Scroll Content */}
             <div className="p-8 max-h-[75vh] overflow-y-auto custom-scrollbar">
-              <img 
+              <Image
+              height={1000} 
+              width={2000}
+              preload={true}
                 src={project.image} 
                 className="rounded-xl w-full aspect-video object-cover mb-6 shadow-md" 
                 alt={project.name} 
