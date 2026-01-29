@@ -3,6 +3,7 @@ import Link from 'next/link';
 import ProjectModal from './ProjectModal';
 import Image from 'next/image';
 import { playClick } from '../../utils/sounds';
+import { FaArrowRight } from 'react-icons/fa';
 
 const FourumCard = ({ projects, onHover, onLeave }) => {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -92,9 +93,9 @@ const FourumCard = ({ projects, onHover, onLeave }) => {
             <Link 
               href="mailto:patelabhay550@gmail.com" 
               onClick={() => { if(playClick) playClick.play(); }} 
-              className="text-xs font-black text-blue-600 hover:text-blue-800 uppercase tracking-widest transition-colors"
+              className="text-xs font-black flex items-center gap-1 text-blue-600 hover:text-blue-800 uppercase tracking-widest transition-colors"
             >
-              CONTACT ME →
+              CONTACT ME <FaArrowRight/>
             </Link>
           </div>
         </div>
