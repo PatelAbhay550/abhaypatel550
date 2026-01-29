@@ -16,7 +16,7 @@ const FourumCard = ({ projects, onHover, onLeave }) => {
 
   return (
     <>
-      <article className="flex flex-col h-[450px] w-full overflow-hidden rounded-3xl border border-gray-100 bg-white shadow-sm transition-all duration-300">
+      <article className="flex flex-col h-[450px] w-full  rounded-3xl border border-gray-100 bg-white shadow-sm transition-all duration-300">
         {/* Top Section */}
         <div className="flex items-start justify-between p-6 pb-4">
           <div className="flex items-center gap-3">
@@ -65,7 +65,7 @@ const FourumCard = ({ projects, onHover, onLeave }) => {
         </div>
 
         {/* Footer */}
-        <div className="mt-auto border-t border-gray-50 bg-gray-50/50 p-6">
+        <div className="mt-auto border-t rounded-3xl border-gray-50 bg-gray-50/50 p-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-1.5 text-gray-500">
               <svg xmlns="http://www.w3.org/2000/svg" className="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">

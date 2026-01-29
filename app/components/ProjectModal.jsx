@@ -8,32 +8,52 @@ const ProjectModal = ({ project, onClose }) => {
   const nodeRef = useRef(null);
   const [mounted, setMounted] = useState(false);
 
+  // 1. MOUNT EFFECT: Must always run in the same order
   useEffect(() => {
     setMounted(true);
-    // Disable body scroll when modal is open
-    document.body.style.overflow = 'hidden';
-    return () => { document.body.style.overflow = 'unset'; };
   }, []);
 
+  // 2. SCROLL LOCK EFFECT: Prevents background scrolling on mobile/desktop
+  useEffect(() => {
+    if (project) {
+      // Save original styles to restore them later
+      const originalStyle = window.getComputedStyle(document.body).overflow;
+      const originalPosition = document.body.style.position;
+      const originalWidth = document.body.style.width;
+
+      document.body.style.overflow = 'hidden';
+      // position: fixed is the most reliable way to lock iOS Safari
+      document.body.style.position = 'fixed';
+      document.body.style.width = '100%';
+
+      return () => {
+        document.body.style.overflow = originalStyle;
+        document.body.style.position = originalPosition;
+        document.body.style.width = originalWidth;
+      };
+    }
+  }, [project]);
+
+  // 3. EARLY RETURN: This MUST come after all useEffect calls
   if (!project || !mounted) return null;
 
   const modalContent = (
-    <div className="fixed inset-0 z-[9999] flex flex-col justify-end md:justify-center md:items-center p-0 md:p-4">
-      {/* 1. Backdrop */}
+    <div className="fixed inset-0 z-[9999] flex flex-col justify-end md:justify-center md:items-center">
+      {/* Backdrop */}
       <div 
-        className="absolute inset-0 bg-black/70 backdrop-blur-sm transition-opacity" 
+        className="fixed inset-0 bg-black/70 backdrop-blur-sm transition-opacity" 
         onClick={onClose} 
       />
 
       {/* --- MOBILE VIEW --- */}
       <div 
-        className="md:hidden relative w-full bg-white rounded-t-[32px] flex flex-col shadow-2xl animate-in slide-in-from-bottom duration-300"
-        style={{ height: '85vh' }} // Defined height is required for internal scroll
+        className="md:hidden relative w-full bg-white rounded-t-[32px] flex flex-col shadow-2xl z-10 animate-in slide-in-from-bottom duration-300"
+        style={{ height: '85vh', maxHeight: '85vh' }}
       >
         {/* Drag Indicator */}
         <div className="w-12 h-1.5 bg-gray-300 rounded-full mx-auto my-4 shrink-0" />
         
-        {/* Header: Sticky to top of the modal */}
+        {/* Header */}
         <div className="flex items-center justify-between px-6 pb-4 shrink-0">
           <h2 className="text-2xl font-bold text-gray-900 leading-tight">{project.name}</h2>
           <button 
@@ -44,10 +64,10 @@ const ProjectModal = ({ project, onClose }) => {
           </button>
         </div>
 
-        {/* 2. THE SCROLLABLE CONTENT AREA */}
+        {/* Scrollable Area */}
         <div 
-          className="flex-1 overflow-y-auto px-6 pb-20 overscroll-contain"
-          style={{ WebkitOverflowScrolling: 'touch' }} // Smooth iOS scroll
+          className="flex-1 overflow-y-auto px-6 pb-24 overscroll-contain touch-pan-y"
+          style={{ WebkitOverflowScrolling: 'touch' }}
         >
           <img 
             src={project.image} 
@@ -63,33 +83,32 @@ const ProjectModal = ({ project, onClose }) => {
             
             <div>
               <p className="text-[10px] font-black uppercase tracking-[0.2em] text-blue-600 mb-1">Project Description</p>
-              <div className="text-gray-600 leading-relaxed text-base">
+              <div className="text-gray-600 leading-relaxed text-base pb-6">
                 {project.description}
-                {/* Visual padding to ensure bottom content isn't cut off */}
-                <div className="h-10" />
               </div>
             </div>
 
             {project.link && (
-              <Link 
-                href={project.link} 
-                target="_blank" 
-                className="flex items-center justify-center gap-3 w-full bg-blue-600 text-white py-4 rounded-2xl font-bold text-lg shadow-lg shadow-blue-200 active:bg-blue-700 active:scale-[0.98] transition-all"
-              >
-                Visit Live Site <FaExternalLinkAlt size={16} />
-              </Link>
+              <div className="pb-10">
+                <Link 
+                  href={project.link} 
+                  target="_blank" 
+                  className="flex items-center justify-center gap-3 w-full bg-blue-600 text-white py-4 rounded-2xl font-bold text-lg shadow-lg shadow-blue-200 active:bg-blue-700 active:scale-[0.98] transition-all"
+                >
+                  Visit Live Site <FaExternalLinkAlt size={16} />
+                </Link>
+              </div>
             )}
           </div>
         </div>
       </div>
 
       {/* --- DESKTOP VIEW --- */}
-      <div className="hidden md:block pointer-events-none w-full max-w-[550px]">
+      <div className="hidden md:block pointer-events-none w-full max-w-[550px] z-20">
         <Draggable 
           nodeRef={nodeRef} 
           handle=".modal-header" 
           bounds="parent"
-          defaultPosition={{x: 0, y: 0}}
         >
           <div 
             ref={nodeRef} 
@@ -108,7 +127,7 @@ const ProjectModal = ({ project, onClose }) => {
               </button>
             </div>
 
-            {/* Content Area */}
+            {/* Desktop Scroll Content */}
             <div className="p-8 max-h-[75vh] overflow-y-auto custom-scrollbar">
               <img 
                 src={project.image} 
@@ -122,7 +141,7 @@ const ProjectModal = ({ project, onClose }) => {
                 </div>
                 <div>
                   <h3 className="text-[10px] font-black uppercase text-blue-500 tracking-widest">Details</h3>
-                  <p className="text-gray-600 leading-relaxed leading-7">{project.description}</p>
+                  <p className="text-gray-600 leading-relaxed">{project.description}</p>
                 </div>
                 {project.link && (
                   <Link 
