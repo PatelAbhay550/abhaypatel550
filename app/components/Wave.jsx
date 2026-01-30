@@ -10,7 +10,7 @@ const BackgroundWave = () => {
       width: '100vw',
       zIndex: 1,
       pointerEvents: 'none',
-    }}>
+    }} className='h-48 md:h-52 lg:h-60'>
       <Wave mask="url(#mask)" fill="#1277b0" >
   <defs>
     <linearGradient id="gradient" gradientTransform="rotate(90)">
