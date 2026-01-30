@@ -75,7 +75,7 @@ export default function FullHome() {
               loading='eager'
               src="https://pics.clipartpng.com/Sparrow_PNG_Clipart-672.png"
               alt="Sparrow"
-              className={`w-20 cursor-pointer h-20 object-contain z-30 -mt-[70px] transition-transform duration-300 ${isSparrowRotated ? 'rotate-[-20deg]' : ''}`}
+              className={`w-20 cursor-pointer h-20 object-contain z-30 -mt-[70px] transition-transform duration-300 ${isSparrowRotated ? 'rotate-[20deg]' : ''}`}
               onClick={() => {
                 playSparrow.play();
                 setIsSparrowRotated(true);
