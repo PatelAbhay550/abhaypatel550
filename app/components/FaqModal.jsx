@@ -19,7 +19,7 @@ const faqs = [
   },
   {
     question: 'Why is there a Sparrow on the page?',
-    answer: 'The Sparrow is a fun interactive element that plays a sound when clicked! Also, their population is declining, so featuring a sparrow is a nod to raising awareness about their conservation.'
+    answer: 'Their population is declining, so featuring a sparrow is a nod to raising awareness about their conservation. Sound Effect by <a style="color:blue;" target="_blank" href="https://pixabay.com/users/sondangsirait419-44635360/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=220066">Sondang Sirait</a> from <a style="color:blue;" target="_blank" href="https://pixabay.com/sound-effects//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=220066">Pixabay</a>.'
   }
 ];
 
@@ -90,7 +90,7 @@ export default function FaqModal({ open, onClose }) {
             {faqs.map((faq, idx) => (
               <div key={idx} className="border-b border-gray-100 pb-4 mb-4">
                 <div className="text-blue-700 font-semibold mb-1 flex items-center gap-2"><FaQuestionCircle className="text-blue-400" /> {faq.question}</div>
-                <div className="text-gray-700 text-sm pl-6">{faq.answer}</div>
+                <div className="text-gray-700 text-sm pl-6" dangerouslySetInnerHTML={{ __html: faq.answer }}></div>
               </div>
             ))}
           </div>
