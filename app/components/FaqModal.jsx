@@ -98,7 +98,7 @@ export default function FaqModal({ open, onClose }) {
       </div>
 
       {/* --- DESKTOP VIEW --- */}
-      <div className="hidden md:block pointer-events-none w-full max-w-[500px] z-20">
+      <div className="hidden md:block pointer-events-none w-full max-w-[550px] z-20">
         <Draggable nodeRef={nodeRef} handle=".modal-header" bounds="parent">
           <div 
             ref={nodeRef} 
@@ -123,7 +123,7 @@ export default function FaqModal({ open, onClose }) {
               <div className="space-y-6">
                 {faqs.map((faq, idx) => (
                   <div key={idx} className="border-b border-gray-100 pb-4 mb-4">
-                    <div className="text-blue-700 font-semibold mb-1 flex items-center gap-2"><FaQuestionCircle className="text-blue-400" /> {faq.question}</div>
+                    <div className="text-blue-700 font-semibold mb-1 flex items-center gap-2"><FaQuestionCircle className="text-white" /> {faq.question}</div>
                     <div className="text-gray-900 text-sm pl-6" dangerouslySetInnerHTML={{ __html: faq.answer }}></div>
                   </div>
                 ))}
