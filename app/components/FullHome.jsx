@@ -45,6 +45,7 @@ export default function FullHome() {
   ];
 
   const [activeData, setActiveData] = useState(mainProfile);
+  const [isSparrowRotated, setIsSparrowRotated] = useState(false);
 
   return (
     <main className="min-h-screen relative  z-10 flex flex-col items-center justify-center p-6  ">
@@ -70,7 +71,17 @@ export default function FullHome() {
             {/* Log image */}
               <img loading='eager' src="https://png.pngtree.com/png-vector/20230104/ourmid/pngtree-wood-log-vector-clip-art-png-image_6551751.png" alt="Log" className="w-40 h-10 object-contain z-20 drop-shadow-2xl" style={{ marginBottom: '-18px', filter: 'drop-shadow(0 8px 16px rgba(0,0,0,0.7))' }} />
             {/* Sparrow image */}
-            <img loading='eager' src="https://pics.clipartpng.com/Sparrow_PNG_Clipart-672.png" alt="Sparrow" className="w-20  cursor-pointer h-20 object-contain z-30 -mt-[70px]" onClick={() => playSparrow.play()} />
+            <img
+              loading='eager'
+              src="https://pics.clipartpng.com/Sparrow_PNG_Clipart-672.png"
+              alt="Sparrow"
+              className={`w-20 cursor-pointer h-20 object-contain z-30 -mt-[70px] transition-transform duration-300 ${isSparrowRotated ? 'rotate-[-20deg]' : ''}`}
+              onClick={() => {
+                playSparrow.play();
+                setIsSparrowRotated(true);
+                setTimeout(() => setIsSparrowRotated(false), 350);
+              }}
+            />
           </div>
           <div className="md:mt-16 mt-28 m-20 bg-blue-400 border-0 hover:border-2 hover:bg-white rounded-2xl px-2 py-2 hover:text-blue-600 text-white flex flex-col items-center gap-4"> <Link href="/tech-stack" onClick={()=>{playClick.play();}} className=' flex items-center gap-1'>Know My Techstack <FaArrowRight/></Link></div>
     </main>
