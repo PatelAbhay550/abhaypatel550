@@ -5,7 +5,9 @@ export function proxy(request: NextRequest) {
   const userAgent = request.headers.get('user-agent') || ''
   
   // Detect if the user is using curl, wget, or httpie
-  const isCLI = /curl|wget|httpie/i.test(userAgent)
+ const isCLI = /curl|wget|httpie|powershell/i.test(userAgent)
+
+  
 
   if (isCLI) {
     // Rewrite the URL to your special API route
