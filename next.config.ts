@@ -19,6 +19,14 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "images.unsplash.com", // Recommended for the placeholder project images used in your cards
+      },
+      {
+        protocol: "https",
+        hostname: "png.pngtree.com",
+      },
+      {
+        protocol: "https",
+        hostname: "pics.clipartpng.com",
       }
     ],
     // Optimization: Reduces server load by allowing local image optimization
