@@ -28,7 +28,7 @@ const FourumCard = ({ projects, onHover, onLeave }) => {
 
   return (
     <>
-      <article className="flex flex-col h-[450px] w-full rounded-3xl border border-gray-100 bg-white shadow-sm transition-all duration-300">
+      <article className="flex flex-col h-[450px] bg-white/60 backdrop-blur-md  w-full rounded-3xl border border-gray-100  shadow-sm transition-all duration-300">
         
         {/* Top Section / Header */}
         <div className="flex items-start justify-between p-6 pb-2">

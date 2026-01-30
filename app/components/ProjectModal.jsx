@@ -49,7 +49,7 @@ const ProjectModal = ({ project, onClose }) => {
 
       {/* --- MOBILE VIEW --- */}
       <div 
-        className="md:hidden relative w-full bg-white rounded-t-[32px] flex flex-col shadow-2xl z-10 animate-in slide-in-from-bottom duration-300"
+        className="md:hidden relative w-full bg-white/60 backdrop-blur-md  rounded-t-[32px] flex flex-col shadow-2xl z-10 animate-in slide-in-from-bottom duration-300"
         style={{ height: '85vh', maxHeight: '85vh' }}
       >
         {/* Drag Indicator */}
@@ -124,7 +124,7 @@ const ProjectModal = ({ project, onClose }) => {
         >
           <div 
             ref={nodeRef} 
-            className="pointer-events-auto bg-white rounded-[24px] shadow-[0_30px_60px_rgba(0,0,0,0.4)] border border-gray-100 flex flex-col overflow-hidden"
+            className="pointer-events-auto bg-white/60 backdrop-blur-md  rounded-[24px] shadow-[0_30px_60px_rgba(0,0,0,0.4)] border border-gray-100 flex flex-col overflow-hidden"
           >
             {/* Draggable Header */}
             <div className="modal-header flex items-center justify-between px-6 py-4 bg-gray-50/80 border-b border-gray-100 cursor-grab active:cursor-grabbing">
@@ -156,7 +156,7 @@ const ProjectModal = ({ project, onClose }) => {
                 </div>
                 <div>
                   <h3 className="text-[10px] font-black uppercase text-blue-500 tracking-widest">Details</h3>
-                  <p className="text-gray-600 leading-relaxed">{project.description}</p>
+                  <p className="text-gray-900 leading-relaxed">{project.description}</p>
                 </div>
                 {project.link && (
                   <Link 

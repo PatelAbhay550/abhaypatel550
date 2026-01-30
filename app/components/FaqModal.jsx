@@ -50,7 +50,7 @@ export default function FaqModal({ open, onClose }) {
   if (!open || !mounted) return null;
 
   const modalContent = (
-    <div className="fixed inset-0 z-[9999] flex flex-col justify-end md:justify-center md:items-center">
+    <div className="fixed inset-0 z-[9999]  flex flex-col justify-end md:justify-center md:items-center">
       {/* Backdrop */}
       <div 
         className="fixed inset-0 bg-black/70 backdrop-blur-sm transition-opacity" 
@@ -59,7 +59,7 @@ export default function FaqModal({ open, onClose }) {
 
       {/* --- MOBILE VIEW --- */}
       <div 
-        className="md:hidden relative w-full bg-white rounded-t-[32px] flex flex-col shadow-2xl z-10 animate-in slide-in-from-bottom duration-300"
+        className="md:hidden relative w-full bg-white/60 backdrop-blur-md  rounded-t-[32px] flex flex-col shadow-2xl z-10 animate-in slide-in-from-bottom duration-300"
         style={{ height: '70vh', maxHeight: '70vh' }}
       >
         {/* Drag Indicator */}
@@ -102,7 +102,7 @@ export default function FaqModal({ open, onClose }) {
         <Draggable nodeRef={nodeRef} handle=".modal-header" bounds="parent">
           <div 
             ref={nodeRef} 
-            className="pointer-events-auto bg-white rounded-[24px] shadow-[0_30px_60px_rgba(0,0,0,0.4)] border border-gray-100 flex flex-col overflow-hidden"
+            className="pointer-events-auto bg-white/60 backdrop-blur-md  rounded-[24px] shadow-[0_30px_60px_rgba(0,0,0,0.4)] border border-gray-100 flex flex-col overflow-hidden"
           >
             {/* Draggable Header */}
             <div className="modal-header flex items-center justify-between px-6 py-4 bg-gray-50/80 border-b border-gray-100 cursor-grab active:cursor-grabbing">
@@ -124,7 +124,7 @@ export default function FaqModal({ open, onClose }) {
                 {faqs.map((faq, idx) => (
                   <div key={idx} className="border-b border-gray-100 pb-4 mb-4">
                     <div className="text-blue-700 font-semibold mb-1 flex items-center gap-2"><FaQuestionCircle className="text-blue-400" /> {faq.question}</div>
-                    <div className="text-gray-700 text-sm pl-6">{faq.answer}</div>
+                    <div className="text-gray-900 text-sm pl-6" dangerouslySetInnerHTML={{ __html: faq.answer }}></div>
                   </div>
                 ))}
               </div>
