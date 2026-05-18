@@ -7,7 +7,7 @@ import BackgroundWave from './components/Wave';
 
 export default function Home() {
   const abhayData = {
-    image: "https://avatars.githubusercontent.com/u/90134639?v=4",
+    image: "https://ibb.co/Q3xC8gnz",
     title: "Developer",
     name: "Abhay Patel",
     description: "I am a frontend developer with 5 years of experience building web applications, specializing in Next.js and modern React ecosystems."
