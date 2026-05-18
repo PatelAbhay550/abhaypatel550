@@ -12,7 +12,7 @@ import Image from 'next/image';
 
 export default function FullHome() {
   const mainProfile = {
-    image: "https://ibb.co/Ng1J9qND",
+    image: "https://i.ibb.co/XfyK7P50/img-1-1779077702203.jpg",
     title: "Hey there! I'm",
     name: "Abhay Patel",
     description: "I am a fullstack developer with 5 years of experience building web applications, specializing in Next.js and modern React ecosystems."
