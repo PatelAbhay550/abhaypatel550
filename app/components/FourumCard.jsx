@@ -38,7 +38,7 @@ const FourumCard = ({ projects, onHover, onLeave }) => {
                 height={40}
                 width={40}
                 alt="User"
-                src="https://ibb.co/Q3xC8gnz"
+                src="https://i.ibb.co/C3SMJcvN/img-1-1779077831821.jpg"
                 className="size-10 rounded-xl object-cover ring-2 ring-gray-50"
               />
               <span className="absolute -bottom-1 -right-1 block size-3 rounded-full border-2 border-white bg-blue-500 shadow-sm animate-pulse"></span>
