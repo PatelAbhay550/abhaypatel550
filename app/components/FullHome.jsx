@@ -25,7 +25,7 @@ export default function FullHome() {
       title: "Full Stack",
       image: "https://i.ibb.co/Tqknfdmt/image.png",
       description: "A tool to check marks of SSC, RRB Exams.",
-      link: "https://examrankcheck.vercel.app/"
+      link: "https://examrankcheck.in/"
     },
     {
       id: 2,
