@@ -8,7 +8,9 @@ html {
 }
 
 body {
-  background-color: #ffffff;
+  /* Warm paper base with a subtle SVG grain overlay (paper texture) */
+  background-color: #f6f2ea;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)' opacity='0.06'/%3E%3C/svg%3E");
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -18,7 +20,9 @@ body {
 }
 
 .dark body {
-  background-color: #0b1120;
+  /* Dark "charcoal paper" tone, same grain overlay */
+  background-color: #10131b;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)' opacity='0.07'/%3E%3C/svg%3E");
 }
 
 .main-btn {

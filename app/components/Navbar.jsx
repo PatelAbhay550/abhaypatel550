@@ -1,5 +1,6 @@
 'use client';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import {
@@ -73,8 +74,14 @@ export default function Navbar() {
             onClick={() => { if (playClick) playClick.play(); }}
             className="group flex items-center gap-2.5"
           >
-            <span className="grid size-8 place-items-center rounded-lg bg-blue-600 text-sm font-black text-white transition-transform group-hover:scale-105">
-              AP
+            <span className="size-8 overflow-hidden rounded-full ring-2 ring-blue-600/30 transition-all duration-300 group-hover:scale-105 group-hover:ring-blue-600/70">
+              <Image
+                src="https://i.ibb.co/C3SMJcvN/img-1-1779077831821.jpg"
+                alt="Abhay Patel"
+                width={32}
+                height={32}
+                className="size-full object-cover"
+              />
             </span>
             <span className="hidden text-sm font-bold text-gray-900 sm:block dark:text-white">
               Abhay Patel

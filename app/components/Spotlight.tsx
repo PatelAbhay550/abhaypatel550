@@ -59,7 +59,7 @@ export default function SpotlightGrid() {
   ];
 
   return (
-    <div className="min-h-screen bg-white flex flex-col items-center justify-center font-sans dark:bg-gray-950">
+    <div className="flex flex-col items-center justify-center font-sans">
       <div
         ref={containerRef}
         className="grid w-full max-w-5xl grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"

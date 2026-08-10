@@ -48,10 +48,10 @@ export default function FullHome() {
   const [isSparrowRotated, setIsSparrowRotated] = useState(false);
 
   return (
-    <main className="relative z-10 flex min-h-screen flex-col items-center justify-start px-6 pb-44 pt-10 md:pt-16">
+    <main className="relative z-10 flex min-h-screen flex-col items-center justify-start px-6 pb-28 pt-10 md:pt-16">
       {/* Hero */}
       <Reveal className="flex w-full max-w-4xl flex-col items-center text-center">
-        <span className="text-xs font-black uppercase tracking-[0.3em] text-blue-600 dark:text-blue-400">
+        <span className="inline-flex items-center gap-2 rounded-full border border-blue-600/20 bg-blue-500/10 px-4 py-1.5 text-xs font-black uppercase tracking-[0.3em] text-blue-600 dark:border-blue-400/25 dark:bg-blue-500/10 dark:text-blue-400">
           👋 Hey there, I&apos;m
         </span>
         <h1 className="mt-3 text-5xl font-black tracking-tight text-gray-900 dark:text-white md:text-7xl">
@@ -100,8 +100,8 @@ export default function FullHome() {
         </div>
       </Reveal>
 
-      {/* Sparrow sitting on a log above the wave */}
-      <div className="absolute bottom-36 right-12 z-30 flex flex-col items-center select-none md:bottom-24 md:right-8">
+      {/* Sparrow sitting on a log at the bottom-right corner */}
+      <div className="absolute bottom-5 right-6 z-30 flex flex-col items-center select-none md:bottom-8 md:right-10">
         <Image
           preload={true}
           width={800}
