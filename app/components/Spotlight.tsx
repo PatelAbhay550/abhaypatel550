@@ -59,7 +59,7 @@ export default function SpotlightGrid() {
   ];
 
   return (
-    <div className="min-h-screen bg-white flex flex-col items-center justify-center font-sans">
+    <div className="min-h-screen bg-white flex flex-col items-center justify-center font-sans dark:bg-gray-950">
       <div
         ref={containerRef}
         className="grid w-full max-w-5xl grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
@@ -83,7 +83,7 @@ export default function SpotlightGrid() {
             />
 
             {/* Inner Content Layer */}
-            <div className="relative h-full w-full overflow-hidden rounded-xl bg-white p-6 flex flex-col justify-center text-black z-20">
+            <div className="relative h-full w-full overflow-hidden rounded-xl bg-white p-6 flex flex-col justify-center text-black z-20 dark:bg-gray-900 dark:text-white">
               
               {/* IMAGE: Show if Hovered OR Active */}
               <div 
@@ -106,7 +106,7 @@ export default function SpotlightGrid() {
                 `}
               >
                 <h3 className="text-xl font-bold mb-2">{card.title}</h3>
-                <p className="text-slate-500 text-sm">{card.description}</p>
+                <p className="text-slate-500 text-sm dark:text-slate-400">{card.description}</p>
               </div>
 
             </div>
@@ -115,7 +115,7 @@ export default function SpotlightGrid() {
       </div>
 
       <div className="mt-12 flex flex-col items-center gap-4"> 
-        <Link href="/" className='hover:text-blue-600'>Go Back &rarr;</Link>
+        <Link href="/" className='text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400'>Go Back &rarr;</Link>
       </div>
     </div>
   );

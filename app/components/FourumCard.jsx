@@ -28,7 +28,7 @@ const FourumCard = ({ projects, onHover, onLeave }) => {
 
   return (
     <>
-      <article className="flex flex-col h-[450px] bg-white/60 backdrop-blur-md  w-full rounded-3xl border border-gray-100  shadow-sm transition-all duration-300">
+      <article className="flex flex-col h-[450px] bg-white/60 backdrop-blur-md  w-full rounded-3xl border border-gray-100  shadow-sm transition-all duration-300 dark:bg-white/[0.06] dark:border-white/10">
         
         {/* Top Section / Header */}
         <div className="flex items-start justify-between p-6 pb-2">
@@ -45,18 +45,18 @@ const FourumCard = ({ projects, onHover, onLeave }) => {
             </div>
             <div className="flex flex-col leading-tight">
               <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Status</span>
-              <span className="text-sm font-bold text-gray-900">Available for work</span>
+              <span className="text-sm font-bold text-gray-900 dark:text-gray-100">Available for work</span>
             </div>
           </div>
 
-          <span className="inline-flex items-center gap-1 rounded-full bg-blue-50 px-2.5 py-1 text-blue-700 ring-1 ring-inset ring-blue-600/10">
+          <span className="inline-flex items-center gap-1 rounded-full bg-blue-50 px-2.5 py-1 text-blue-700 ring-1 ring-inset ring-blue-600/10 dark:bg-blue-500/15 dark:text-blue-300 dark:ring-blue-400/20">
             <span className="text-[10px] font-black uppercase tracking-tight">Active Explorer</span>
           </span>
         </div>
 
         {/* --- DESKTOP ICON GRID SECTION --- */}
         <div className="flex-1 px-4 py-4 overflow-y-auto custom-scrollbar">
-          <h2 className="px-2 text-sm font-bold text-gray-900 mb-4">Projects &amp; Works</h2>
+          <h2 className="px-2 text-sm font-bold text-gray-900 mb-4 dark:text-gray-100">Projects &amp; Works</h2>
           <div className="grid grid-cols-3 sm:grid-cols-4 gap-4">
             
             {/* Project Folders */}
@@ -66,7 +66,7 @@ const FourumCard = ({ projects, onHover, onLeave }) => {
                 onMouseEnter={() => onHover(project)}
                 onMouseLeave={onLeave}
                 onClick={() => handleProjectClick(project)}
-                className="group flex flex-col items-center gap-1.5 p-2 rounded-xl transition-all hover:bg-blue-50/50 outline-none"
+                className="group flex flex-col items-center gap-1.5 p-2 rounded-xl transition-all hover:bg-blue-50/50 outline-none dark:hover:bg-blue-500/10"
               >
                 {/* Folder Icon Wrapper */}
                 <div className="relative flex items-center justify-center transition-transform group-active:scale-90 group-hover:-translate-y-1">
@@ -81,7 +81,7 @@ const FourumCard = ({ projects, onHover, onLeave }) => {
                   <div className="absolute inset-0 bg-blue-400 opacity-0 blur-xl group-hover:opacity-20 transition-opacity" />
                 </div>
                 {/* Project Name Label */}
-                <span className="text-[10px] font-bold text-gray-700 text-center leading-tight truncate w-full px-1 group-hover:text-blue-600">
+                <span className="text-[10px] font-bold text-gray-700 text-center leading-tight truncate w-full px-1 group-hover:text-blue-600 dark:text-gray-300 dark:group-hover:text-blue-400">
                   {project.name}
                 </span>
               </button>
@@ -89,7 +89,7 @@ const FourumCard = ({ projects, onHover, onLeave }) => {
             {/* FAQ Folder */}
             <button
               onClick={handleFaqClick}
-              className="group flex flex-col items-center gap-1.5 p-2 rounded-xl transition-all hover:bg-blue-50/50 outline-none"
+              className="group flex flex-col items-center gap-1.5 p-2 rounded-xl transition-all hover:bg-blue-50/50 outline-none dark:hover:bg-blue-500/10"
             >
               <div className="relative flex items-center justify-center transition-transform group-active:scale-90 group-hover:-translate-y-1">
                 {/* FAQ Folder Icon */}
@@ -101,7 +101,7 @@ const FourumCard = ({ projects, onHover, onLeave }) => {
                   </svg>
                 <div className="absolute inset-0 bg-yellow-400 opacity-0 blur-xl group-hover:opacity-20 transition-opacity" />
               </div>
-              <span className="text-[10px] font-bold text-zinc-700 text-center leading-tight truncate w-full px-1 group-hover:text-blue-600">
+              <span className="text-[10px] font-bold text-zinc-700 text-center leading-tight truncate w-full px-1 group-hover:text-blue-600 dark:text-gray-300 dark:group-hover:text-blue-400">
                 FAQs
               </span>
             </button>
@@ -109,9 +109,9 @@ const FourumCard = ({ projects, onHover, onLeave }) => {
         </div>
 
         {/* Footer */}
-        <div className="mt-auto border-t border-gray-50 bg-gray-50/50 py-6 px-4 rounded-b-3xl">
+        <div className="mt-auto border-t border-gray-100 bg-gray-50/60 py-6 px-4 rounded-b-3xl dark:border-white/10 dark:bg-white/5">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-1.5 text-gray-500">
+            <div className="flex items-center gap-1.5 text-gray-500 dark:text-gray-400">
               <svg xmlns="http://www.w3.org/2000/svg" className="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"></path>
               </svg>
@@ -120,7 +120,7 @@ const FourumCard = ({ projects, onHover, onLeave }) => {
             <Link 
               href="mailto:patelabhay550@gmail.com" 
               onClick={() => { if(playClick) playClick.play(); }} 
-              className="text-xs font-black flex items-center gap-1 text-blue-600 hover:text-blue-800 uppercase tracking-widest transition-colors"
+              className="text-xs font-black flex items-center gap-1 text-blue-600 hover:text-blue-800 uppercase tracking-widest transition-colors dark:text-blue-400 dark:hover:text-blue-300"
             >
               CONTACT ME <FaArrowRight/>
             </Link>
