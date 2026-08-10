@@ -33,10 +33,8 @@ const nextConfig: NextConfig = {
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     formats: ['image/avif', 'image/webp'], // Modern formats for better compression in 2026
   },
-  // Modern Next.js apps often benefit from experimental features like typedRoutes
-  experimental: {
-    typedRoutes: true,
-  }
+  // Next.js 16: typedRoutes is now a stable top-level option (moved out of `experimental`)
+  typedRoutes: true,
 };
 
 export default nextConfig;
